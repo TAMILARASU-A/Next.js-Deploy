@@ -1,0 +1,47 @@
+/* styles/globals.css */
+
+.landing-page {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f9fafc;
+  overflow-x: hidden;
+}
+
+/* Animations */
+.animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+.fadeIn {
+  animation-name: fadeIn;
+}
+.fadeInDown {
+  animation-name: fadeInDown;
+}
+.fadeInUp {
+  animation-name: fadeInUp;
+}
+.delay-1s {
+  animation-delay: 1s;
+}
+.delay-2s {
+  animation-delay: 2s;
+}
+.delay-3s {
+  animation-delay: 3s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
