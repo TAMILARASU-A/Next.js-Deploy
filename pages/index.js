@@ -30,7 +30,7 @@ export default function Home() {
 
         {/* Hero */}
         <section className="text-center py-5 animated fadeIn">
-          <h2 className="display-4 fw-bold">Small Stories. Big Impact.</h2>
+          <h2 className="display-4 fw-bold">Small Stories. Huge Impact.</h2>
           <p className="fs-5 mt-3">
             Enter a word or choose a genre. MicroMuse crafts a gripping micro-story under 100 words,
             every single day.
@@ -105,3 +105,4 @@ export default function Home() {
     </>
   )
 }
+
