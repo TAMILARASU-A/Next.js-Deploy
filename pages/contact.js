@@ -24,7 +24,7 @@ export default function Contact() {
       <div
         style={{
           backgroundImage:
-            'url("https://th.bing.com/th/id/OIP.brPp6aYoWcuXOsAY0oW5fwHaEo?pid=ImgDet&rs=1")',
+            'url("https://assets-global.website-files.com/653c03c7c53a2bcd281723b3/653d21a168483c9744514ee2_649c9c12f6d41f0d1ce9b5b0_Midjourney%2520Storyboard.jpeg")',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
@@ -77,8 +77,8 @@ export default function Contact() {
         </div>
 
         <div className="mt-4">
-          <Link href="/" className="btn btn-outline-dark me-3">🏠 Home</Link>
-          <Link href="/generate" className="btn btn-dark">✍️ Try Generate</Link>
+          <Link href="/" className="btn btn-outline-light me-3">🏠 Home</Link>
+          <Link href="/generate" className="btn btn-light">✍️ Try Generate</Link>
         </div>
       </div>
     </>
