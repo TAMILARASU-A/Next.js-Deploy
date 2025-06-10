@@ -1,4 +1,3 @@
-// pages/about.js
 import Head from 'next/head'
 import Link from 'next/link'
 
@@ -23,7 +22,7 @@ export default function About() {
           <h1 className="fw-bold mb-3">📖 About MicroMuse</h1>
           <p className="fs-5">
             <strong>MicroMuse</strong> is an AI-powered microfiction generator that brings
-            bite-sized stories to life with a single word or idea. Whether you're a writer looking
+            bite-sized stories to life with a single word or idea. Whether you&#39;re a writer looking
             for inspiration or a reader in love with short-form storytelling, MicroMuse delivers
             creative sparks in under 100 words.
           </p>
