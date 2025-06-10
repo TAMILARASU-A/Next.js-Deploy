@@ -28,10 +28,6 @@ export default function About() {
             creative sparks in under 100 words.
           </p>
 
-    
-
-          
-
           <div className="mt-4">
             <Link href="/" className="btn btn-outline-primary me-3">
               🏠 Home
