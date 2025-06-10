@@ -1,4 +1,3 @@
-// pages/about.js
 import Head from 'next/head'
 import Link from 'next/link'
 
@@ -14,15 +13,19 @@ export default function About() {
       </Head>
 
       <div
-        className="d-flex flex-column align-items-center justify-content-center min-vh-100 px-3 text-white text-shadow"
+        className="d-flex flex-column align-items-center justify-content-center min-vh-100 px-3 text-white"
         style={{
-          backgroundImage: 'url("https://sl.bing.net/dhAegT7wfiC")',
+          backgroundImage: 'url("https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1200&q=80")',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
+          backdropFilter: 'blur(2px)',
         }}
       >
-        <div className="text-center bg-dark bg-opacity-50 p-5 rounded-4" style={{ maxWidth: '700px' }}>
+        <div
+          className="text-center p-4 rounded-4"
+          style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)', maxWidth: '700px' }}
+        >
           <h1 className="fw-bold mb-3">📖 About MicroMuse</h1>
           <p className="fs-5">
             <strong>MicroMuse</strong> is an AI-powered microfiction generator that brings
@@ -35,7 +38,7 @@ export default function About() {
             <Link href="/" className="btn btn-outline-light me-3">
               🏠 Home
             </Link>
-            <Link href="/generate" className="btn btn-light">
+            <Link href="/generate" className="btn btn-primary">
               ✍️ Try Generating
             </Link>
           </div>
