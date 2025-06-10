@@ -1,7 +1,18 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
 
 export default function About() {
+  const [bgImage, setBgImage] = useState(
+    'https://via.placeholder.com/10x6?text=Loading...' // low-res placeholder
+  )
+
+  useEffect(() => {
+    const img = new Image()
+    img.src = 'https://th.bing.com/th/id/OIP.3ZgfqvAIkpvjOqBt2p_-wQHaEo?pid=ImgDet&rs=1'
+    img.onload = () => setBgImage(img.src)
+  }, [])
+
   return (
     <>
       <Head>
@@ -15,17 +26,20 @@ export default function About() {
       <div
         className="d-flex flex-column align-items-center justify-content-center min-vh-100 px-3 text-white"
         style={{
-          backgroundImage:
-            'url("https://th.bing.com/th/id/OIP.3ZgfqvAIkpvjOqBt2p_-wQHaEo?pid=ImgDet&rs=1")',
+          backgroundImage: `url("${bgImage}")`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
-          backdropFilter: 'blur(1px)',
+          transition: 'background-image 0.8s ease-in-out',
         }}
       >
         <div
           className="text-center p-4 rounded-4"
-          style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)', maxWidth: '700px' }}
+          style={{
+            backgroundColor: 'rgba(0, 0, 0, 0.6)',
+            maxWidth: '700px',
+            backdropFilter: 'blur(4px)',
+          }}
         >
           <h1 className="fw-bold mb-3">📖 About MicroMuse</h1>
           <p className="fs-5">
