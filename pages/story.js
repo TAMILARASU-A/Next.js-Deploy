@@ -1,20 +1,17 @@
-// pages/story.js
-import { useState } from 'react'
-import StoryInput from '../components/StoryInput'
-import StoryPreview from '../components/StoryPreview'
+import Head from 'next/head'
 
 export default function StoryPage() {
-  const [keyword, setKeyword] = useState('')
-
-  const handleGenerate = (value) => {
-    setKeyword(value)
-  }
-
   return (
-    <div className="container py-5">
-      <h1 className="text-center">📝 Create Your MicroStory</h1>
-      <StoryInput onGenerate={handleGenerate} />
-      <StoryPreview keyword={keyword} />
-    </div>
+    <>
+      <Head>
+        <title>Story Page | MicroMuse</title>
+      </Head>
+      <main className="container py-5">
+        <h1 className="text-center mb-4">📚 Your Story</h1>
+        <p className="lead text-center">
+          This page used to include inputs and previews, but now it’s a placeholder. 🎉
+        </p>
+      </main>
+    </>
   )
 }
