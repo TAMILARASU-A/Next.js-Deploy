@@ -1,6 +1,8 @@
 // pages/index.js
 import Head from 'next/head'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
+import Image from 'next/image'
 
 export default function Home() {
   const router = useRouter()
@@ -28,20 +30,20 @@ export default function Home() {
       {/* Navbar */}
       <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
         <div className="container">
-          <a className="navbar-brand" href="/">MicroMuse</a>
+          <Link className="navbar-brand" href="/">MicroMuse</Link>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ms-auto">
               <li className="nav-item">
-                <a className="nav-link" href="/">Home</a>
+                <Link className="nav-link" href="/">Home</Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/about">About</a>
+                <Link className="nav-link" href="/about">About</Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/contact">Contact</a>
+                <Link className="nav-link" href="/contact">Contact</Link>
               </li>
             </ul>
           </div>
@@ -62,9 +64,11 @@ export default function Home() {
             Enter a word or choose a genre. MicroMuse crafts a gripping micro-story under 100 words,
             every single day.
           </p>
-          <img
+          <Image
             src="https://picsum.photos/400/200"
             alt="MicroMuse banner"
+            width={400}
+            height={200}
             className="img-fluid my-3 rounded-4 shadow"
           />
         </section>
@@ -122,7 +126,8 @@ export default function Home() {
             Get Started →
           </button>
           <p className="mt-3">
-            Already have an account? <a href="#">Log in here</a>
+            Already have an account?{' '}
+            <Link href="/login">Log in here</Link>
           </p>
         </section>
 
