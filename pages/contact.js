@@ -24,11 +24,10 @@ export default function Contact() {
         className="d-flex flex-column align-items-center justify-content-center min-vh-100 px-3 text-white"
         style={{
           backgroundImage:
-            'url("https://th.bing.com/th/id/OIP.3ZgfqvAIkpvjOqBt2p_-wQHaEo?pid=ImgDet&rs=1")',
+            'url("https://th.bing.com/th/id/OIP.brPp6aYoWcuXOsAY0oW5fwHaEo?pid=ImgDet&rs=1")',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
-          backdropFilter: 'blur(2px)',
         }}
       >
         <div
