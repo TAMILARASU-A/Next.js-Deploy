@@ -15,11 +15,12 @@ export default function About() {
       <div
         className="d-flex flex-column align-items-center justify-content-center min-vh-100 px-3 text-white"
         style={{
-          backgroundImage: 'url("https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1200&q=80")',
+          backgroundImage:
+            'url("https://th.bing.com/th/id/OIP.3ZgfqvAIkpvjOqBt2p_-wQHaEo?pid=ImgDet&rs=1")',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
-          backdropFilter: 'blur(2px)',
+          backdropFilter: 'blur(1px)',
         }}
       >
         <div
