@@ -1,4 +1,4 @@
-// pages/contact.js
+
 import Head from 'next/head'
 import Link from 'next/link'
 import { useState } from 'react'
@@ -21,22 +21,32 @@ export default function Contact() {
         />
       </Head>
 
+      {/* Background Layer */}
       <div
-        className="d-flex flex-column align-items-center justify-content-center min-vh-100 px-3 text-dark"
         style={{
-          backgroundImage: "url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f')",
+          backgroundImage:
+            'url("https://assets-global.website-files.com/653c03c7c53a2bcd281723b3/653d21a168483c9744514ee2_649c9c12f6d41f0d1ce9b5b0_Midjourney%2520Storyboard.jpeg")',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          backdropFilter: 'blur(4px)',
+          backgroundRepeat: 'no-repeat',
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          zIndex: -1,
+          filter: 'blur(4px) brightness(0.7)',
         }}
-      >
+      />
+
+      {/* Foreground Content */}
+      <div className="d-flex flex-column align-items-center justify-content-center min-vh-100 px-3 text-dark">
         <div
           className="bg-white bg-opacity-75 p-4 rounded shadow-lg"
           style={{
             maxWidth: '500px',
             width: '100%',
-            backdropFilter: 'blur(10px)',
-            border: '1px solid rgba(255,255,255,0.3)',
+            border: '1px solid rgba(255,255,255,0.2)',
           }}
         >
           <div className="text-center mb-4">

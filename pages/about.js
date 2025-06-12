@@ -1,8 +1,18 @@
-// pages/about.js
 import Head from 'next/head'
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
 
 export default function About() {
+  const [bgImage, setBgImage] = useState(
+    'https://via.placeholder.com/10x6?text=Loading...' // low-res placeholder
+  )
+
+  useEffect(() => {
+    const img = new Image()
+    img.src = 'https://th.bing.com/th/id/OIP.3ZgfqvAIkpvjOqBt2p_-wQHaEo?pid=ImgDet&rs=1'
+    img.onload = () => setBgImage(img.src)
+  }, [])
+
   return (
     <>
       <Head>
@@ -14,12 +24,23 @@ export default function About() {
       </Head>
 
       <div
-        className="d-flex flex-column align-items-center justify-content-center min-vh-100 px-3 text-dark"
+        className="d-flex flex-column align-items-center justify-content-center min-vh-100 px-3 text-white"
         style={{
-          background: 'linear-gradient(to right, #fdfbfb, #ebedee)',
+          backgroundImage: `url("${bgImage}")`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          transition: 'background-image 0.8s ease-in-out',
         }}
       >
-        <div className="text-center" style={{ maxWidth: '700px' }}>
+        <div
+          className="text-center p-4 rounded-4"
+          style={{
+            backgroundColor: 'rgba(0, 0, 0, 0.6)',
+            maxWidth: '700px',
+            backdropFilter: 'blur(4px)',
+          }}
+        >
           <h1 className="fw-bold mb-3">📖 About MicroMuse</h1>
           <p className="fs-5">
             <strong>MicroMuse</strong> is an AI-powered microfiction generator that brings
@@ -29,7 +50,7 @@ export default function About() {
           </p>
 
           <div className="mt-4">
-            <Link href="/" className="btn btn-outline-primary me-3">
+            <Link href="/" className="btn btn-outline-light me-3">
               🏠 Home
             </Link>
             <Link href="/generate" className="btn btn-primary">
