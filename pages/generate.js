@@ -2,20 +2,58 @@
 import { useState } from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
+import { db } from '../firebase' // ✅ Firebase config
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore'
 import CharacterCounter from '../components/CharacterCounter'
 import WordHistory from '../components/WordHistory'
 
-export default function Generate() {
+function Generate() {
   const [prompt, setPrompt] = useState('')
   const [story, setStory] = useState('')
   const [confirmedPrompt, setConfirmedPrompt] = useState('')
   const router = useRouter()
 
-  const generateStory = () => {
+  const generateStory = async () => {
     const trimmed = prompt.trim()
     if (!trimmed) return
-    setStory(`✨ In just 83 words, a tale of "${trimmed}" unfolded, mysterious and unforgettable.`)
-    setConfirmedPrompt(trimmed)
+
+    setStory('✨ Generating your story...')
+
+    try {
+      const res = await fetch('/api/gemini', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          prompt: `Write a short microfiction story about: ${trimmed}`,
+        }),
+      })
+
+      const data = await res.json()
+
+      if (data.text) {
+        setStory(data.text)
+        setConfirmedPrompt(trimmed)
+
+        // ✅ Save to Firestore
+        try {
+          await addDoc(collection(db, 'stories'), {
+            prompt: trimmed,
+            story: data.text,
+            createdAt: serverTimestamp(),
+          })
+        } catch (error) {
+          console.error('Error saving to Firestore:', error)
+        }
+
+      } else {
+        setStory('❌ No story returned.')
+      }
+    } catch (err) {
+      console.error('Error generating story:', err)
+      setStory('❌ Error generating story.')
+    }
   }
 
   const goHome = () => {
@@ -77,3 +115,5 @@ export default function Generate() {
     </>
   )
 }
+
+export default Generate
