@@ -2,14 +2,12 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import Image from 'next/image'
 
 export default function Home() {
   const router = useRouter()
 
   const goToLogin = () => {
-    alert('Redirecting to generate page...')
-    router.push('/generate')
+    router.push('/signup')
   }
 
   return (
@@ -21,123 +19,106 @@ export default function Home() {
           href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
           rel="stylesheet"
         />
-        <script
-          src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-          defer
-        ></script>
+        <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet" />
+        <style>{`body { font-family: 'EB Garamond', serif; }`}</style>
       </Head>
 
-      {/* Navbar */}
-      
-
-      <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div className="container">
-          <Link className="navbar-brand" href="/">MicroMuse</Link>
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav ms-auto">
-              <li className="nav-item">
-                <Link className="nav-link" href="/">Home</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" href="/about">About</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" href="/contact">Contact</Link>
-              </li>
-            </ul>
+      {/* 🌄 Fullscreen Background */}
+      <div
+        style={{
+          backgroundImage:
+            'linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url("https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=1920&q=80")',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          minHeight: '100vh',
+          color: 'white',
+        }}
+      >
+        {/* 🔗 Navbar */}
+        <nav className="navbar navbar-expand-lg navbar-dark bg-transparent">
+          <div className="container">
+            <Link className="navbar-brand" href="/">MicroMuse</Link>
+            <div className="collapse navbar-collapse" id="navbarNav">
+              <ul className="navbar-nav ms-auto">
+                <li className="nav-item">
+                  <Link className="nav-link" href="/about">About</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" href="/contact">Contact</Link>
+                </li>
+              </ul>
+            </div>
           </div>
-        </div>
-      </nav>
+        </nav>
 
-      <div className="landing-page">
-        {/* Header */}
-        <header className="text-center py-4 bg-dark text-white animated fadeInDown">
-          <h1>📘 MicroMuse</h1>
-          <p className="lead">AI-Powered Daily Microfiction Generator</p>
+        {/* 🏠 Header */}
+        <header className="text-center py-5">
+          <h1 className="display-3 fw-bold">📘 MicroMuse</h1>
+          <p className="lead">Tiny Tales. Infinite Wonder.</p>
+          <button className="btn btn-light btn-lg mt-4 shadow" onClick={goToLogin}>✨ Get Started</button>
         </header>
 
-        {/* Hero */}
-        <section className="text-center py-5 animated fadeIn">
-          <h2 className="display-4 fw-bold">Small Stories. Big Impact.</h2>
-          <p className="fs-5 mt-3">
-            Enter a word or choose a genre. MicroMuse crafts a gripping micro-story under 100 words,
-            every single day.
-          </p>
-          <Image
-            src="https://picsum.photos/400/200"
-            alt="MicroMuse banner"
-            width={400}
-            height={200}
-            className="img-fluid my-3 rounded-4 shadow"
-          />
-        </section>
-
-        {/* Features */}
-        <section className="container text-center py-5 my-5 animated fadeInUp">
-          <h3 className="mb-5">✨ What You Can Do</h3>
-          <div className="row g-4">
-            <div className="col-md-3">
-              <div className="p-4 border rounded-4 h-100 shadow-sm bg-white">
+        {/* ✅ What You Can Do (Only 2 features, equal height cards) */}
+        <section className="text-center container py-5">
+          <h2 className="mb-4">✨ What You Can Do</h2>
+          <div className="row g-4 justify-content-center">
+            <div className="col-md-4 d-flex align-items-stretch">
+              <div className="p-4 backdrop-card shadow-sm w-100">
                 <h5>🧠 AI Story Generator</h5>
-                <p>Generate unique microfiction using AI.</p>
+                <p>Generate unique microfiction instantly using AI.</p>
               </div>
             </div>
-            <div className="col-md-3">
-              <div className="p-4 border rounded-4 h-100 shadow-sm bg-white">
+            <div className="col-md-4 d-flex align-items-stretch">
+              <div className="p-4 backdrop-card shadow-sm w-100">
                 <h5>🎭 Genre Selection</h5>
-                <p>Pick your genre: Horror, Romance, Sci-Fi, and more.</p>
-              </div>
-            </div>
-            <div className="col-md-3">
-              <div className="p-4 border rounded-4 h-100 shadow-sm bg-white">
-                <h5>🖼️ Quote Cards</h5>
-                <p>Convert stories into beautiful images.</p>
-              </div>
-            </div>
-            <div className="col-md-3">
-              <div className="p-4 border rounded-4 h-100 shadow-sm bg-white">
-                <h5>🔁 Daily Updates</h5>
-                <p>Receive new stories daily with push alerts.</p>
+                <p>Pick your favorite genre like Horror, Romance, Sci-Fi and more.</p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* How It Works */}
-        <section className="bg-light py-5 text-center animated fadeInUp delay-1s">
+        {/* 📌 How It Works */}
+        <section className="text-center py-5">
           <h3>🔍 How It Works</h3>
-          <div className="row mt-4 justify-content-center">
+          <div className="row justify-content-center mt-4">
             <div className="col-md-3">
-              <p><strong>1️⃣</strong> Enter a word or pick a theme</p>
+              <p><strong>1️⃣</strong> Enter a word or pick a genre</p>
             </div>
             <div className="col-md-3">
-              <p><strong>2️⃣</strong> MicroMuse generates a story instantly</p>
+              <p><strong>2️⃣</strong> MicroMuse generates a tiny tale</p>
             </div>
             <div className="col-md-3">
-              <p><strong>3️⃣</strong> Save, share, or get daily updates</p>
+              <p><strong>3️⃣</strong> Download or share your creation</p>
             </div>
           </div>
         </section>
 
-        {/* Call to Action */}
-        <section className="text-center py-4 animated fadeInUp delay-2s">
-          <button className="btn btn-primary btn-lg px-5" onClick={goToLogin}>
-            Get Started →
-          </button>
-          <p className="mt-3">
-            Already have an account?{' '}
-            <Link href="/login">Log in here</Link>
-          </p>
+        {/* 📣 CTA */}
+        <section className="text-center py-5 bg-dark">
+          <h2>🌌 Ready to Write Magic?</h2>
+          <p className="mb-4">Let MicroMuse turn your idea into a story.</p>
+          <button className="btn btn-warning btn-lg px-5" onClick={goToLogin}>Begin Journey →</button>
         </section>
 
-        {/* Footer */}
-        <footer className="bg-dark text-white text-center py-3 animated fadeInUp delay-3s">
+        {/* 👣 Footer */}
+        <footer className="text-center py-4 bg-black text-white">
           <small>&copy; 2025 MicroMuse | Powered by Gemini API & Firebase</small>
         </footer>
       </div>
+
+      <style jsx>{`
+        .backdrop-card {
+          background: rgba(255, 255, 255, 0.1);
+          backdrop-filter: blur(10px);
+          border-radius: 20px;
+          color: #fff;
+          transition: transform 0.3s ease;
+        }
+
+        .backdrop-card:hover {
+          transform: scale(1.03);
+        }
+      `}</style>
     </>
   )
 }
