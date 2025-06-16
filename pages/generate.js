@@ -2,6 +2,8 @@
 import { useState } from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
+import { db } from '../firebase' // ✅ Firebase config
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore'
 import CharacterCounter from '../components/CharacterCounter'
 import WordHistory from '../components/WordHistory'
 
@@ -33,6 +35,18 @@ function Generate() {
       if (data.text) {
         setStory(data.text)
         setConfirmedPrompt(trimmed)
+
+        // ✅ Save to Firestore
+        try {
+          await addDoc(collection(db, 'stories'), {
+            prompt: trimmed,
+            story: data.text,
+            createdAt: serverTimestamp(),
+          })
+        } catch (error) {
+          console.error('Error saving to Firestore:', error)
+        }
+
       } else {
         setStory('❌ No story returned.')
       }
