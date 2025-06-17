@@ -53,8 +53,8 @@ export default function About() {
               From suspense to love, fantasy to sci-fi, every genre becomes a playground of possibility.
             </p>
             <p>
-              We blend OpenAI & Gemini APIs with beautiful design to turn daily prompts into short fiction under 100 words.
-              Whether you're a reader, writer, or dreamer, MicroMuse welcomes your imagination.
+              We blend OpenAI &amp; Gemini APIs with beautiful design to turn daily prompts into short fiction under 100 words.
+              Whether you&apos;re a reader, writer, or dreamer, MicroMuse welcomes your imagination.
             </p>
             <p>
               Start creating. Start feeling. Start MicroMuse.
