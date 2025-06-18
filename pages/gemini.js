@@ -1,15 +1,14 @@
-// pages/gemini.js
-import { useState } from 'react'
+import { useState } from 'react';
 
 export default function GeminiPage() {
-  const [input, setInput] = useState('')
-  const [response, setResponse] = useState('')
-  const [loading, setLoading] = useState(false)
+  const [input, setInput] = useState('');
+  const [response, setResponse] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    setLoading(true)
-    setResponse('')
+    e.preventDefault();
+    setLoading(true);
+    setResponse('');
 
     try {
       const res = await fetch('/api/gemini', {
@@ -18,21 +17,21 @@ export default function GeminiPage() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ prompt: input }),
-      })
+      });
 
-      const data = await res.json()
-      setResponse(data.text || 'No result found.')
+      const data = await res.json();
+      setResponse(data.text || 'No result found.');
     } catch (err) {
-      console.error('Error:', err)
-      setResponse('Error calling Gemini API.')
+      console.error('Error:', err);
+      setResponse('Error calling Gemini API.');
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   return (
     <div style={{ padding: '2rem', maxWidth: '600px', margin: 'auto' }}>
-      <h1>Ask Gemini</h1>
+      <h1>🧠 AI Story Generator</h1>
       <form onSubmit={handleSubmit}>
         <textarea
           value={input}
@@ -52,5 +51,5 @@ export default function GeminiPage() {
         </div>
       )}
     </div>
-  )
+  );
 }

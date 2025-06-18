@@ -4,4 +4,8 @@ const nextConfig = {
   },
 }
 
+<<<<<<< HEAD
 module.exports = nextConfig
+=======
+module.exports = nextConfig
+>>>>>>> saved-changes
