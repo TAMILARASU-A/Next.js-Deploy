@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 export default function Home() {
   const router = useRouter()
 
-  const goToLogin = () => {
+  const goToSignup = () => {
     router.push('/signup')
   }
 
@@ -15,12 +15,6 @@ export default function Home() {
       <Head>
         <title>MicroMuse - AI Microfiction</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link
-          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-          rel="stylesheet"
-        />
-        <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet" />
-        <style>{`body { font-family: 'EB Garamond', serif; }`}</style>
       </Head>
 
       {/* 🌄 Fullscreen Background */}
@@ -32,12 +26,13 @@ export default function Home() {
           backgroundPosition: 'center',
           minHeight: '100vh',
           color: 'white',
+          fontFamily: "'EB Garamond', serif",
         }}
       >
         {/* 🔗 Navbar */}
         <nav className="navbar navbar-expand-lg navbar-dark bg-transparent">
           <div className="container">
-            <Link className="navbar-brand" href="/">MicroMuse</Link>
+            <Link href="/" className="navbar-brand">MicroMuse</Link>
             <div className="collapse navbar-collapse" id="navbarNav">
               <ul className="navbar-nav ms-auto">
                 <li className="nav-item">
@@ -51,14 +46,16 @@ export default function Home() {
           </div>
         </nav>
 
-        {/* 🏠 Header */}
+        {/* 🏠 Hero Section */}
         <header className="text-center py-5">
           <h1 className="display-3 fw-bold">📘 MicroMuse</h1>
           <p className="lead">Tiny Tales. Infinite Wonder.</p>
-          <button className="btn btn-light btn-lg mt-4 shadow" onClick={goToLogin}>✨ Get Started</button>
+          <button className="btn btn-light btn-lg mt-4 shadow" onClick={goToSignup}>
+            ✨ Get Started
+          </button>
         </header>
 
-        {/* ✅ What You Can Do (Only 2 features, equal height cards) */}
+        {/* ✨ Features (Only 2) */}
         <section className="text-center container py-5">
           <h2 className="mb-4">✨ What You Can Do</h2>
           <div className="row g-4 justify-content-center">
@@ -77,7 +74,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 📌 How It Works */}
+        {/* 🔍 How It Works */}
         <section className="text-center py-5">
           <h3>🔍 How It Works</h3>
           <div className="row justify-content-center mt-4">
@@ -93,14 +90,16 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 📣 CTA */}
+        {/* CTA */}
         <section className="text-center py-5 bg-dark">
           <h2>🌌 Ready to Write Magic?</h2>
           <p className="mb-4">Let MicroMuse turn your idea into a story.</p>
-          <button className="btn btn-warning btn-lg px-5" onClick={goToLogin}>Begin Journey →</button>
+          <button className="btn btn-warning btn-lg px-5" onClick={goToSignup}>
+            Begin Journey →
+          </button>
         </section>
 
-        {/* 👣 Footer */}
+        {/* Footer */}
         <footer className="text-center py-4 bg-black text-white">
           <small>&copy; 2025 MicroMuse | Powered by Gemini API & Firebase</small>
         </footer>
