@@ -1,9 +1,11 @@
 // pages/generate.js
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import { db } from '../firebase' // ✅ Firebase config
+import { db } from '../firebase'
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore'
+import html2canvas from 'html2canvas'
+import jsPDF from 'jspdf'
 import CharacterCounter from '../components/CharacterCounter'
 import WordHistory from '../components/WordHistory'
 
@@ -12,6 +14,7 @@ function Generate() {
   const [story, setStory] = useState('')
   const [confirmedPrompt, setConfirmedPrompt] = useState('')
   const router = useRouter()
+  const storyRef = useRef(null)
 
   const generateStory = async () => {
     const trimmed = prompt.trim()
@@ -36,7 +39,7 @@ function Generate() {
         setStory(data.text)
         setConfirmedPrompt(trimmed)
 
-        // ✅ Save to Firestore
+        // Save to Firestore
         try {
           await addDoc(collection(db, 'stories'), {
             prompt: trimmed,
@@ -54,6 +57,26 @@ function Generate() {
       console.error('Error generating story:', err)
       setStory('❌ Error generating story.')
     }
+  }
+
+  const handleDownloadImage = async () => {
+    if (!storyRef.current) return
+    const canvas = await html2canvas(storyRef.current)
+    const link = document.createElement('a')
+    link.href = canvas.toDataURL('image/png')
+    link.download = 'microfiction-story.png'
+    link.click()
+  }
+
+  const handleDownloadPDF = async () => {
+    if (!storyRef.current) return
+    const canvas = await html2canvas(storyRef.current)
+    const imgData = canvas.toDataURL('image/png')
+    const pdf = new jsPDF()
+    const width = pdf.internal.pageSize.getWidth()
+    const height = (canvas.height * width) / canvas.width
+    pdf.addImage(imgData, 'PNG', 0, 0, width, height)
+    pdf.save('microfiction-story.pdf')
   }
 
   const goHome = () => {
@@ -100,8 +123,19 @@ function Generate() {
           </button>
 
           {story && (
-            <div className="alert alert-info text-dark mt-4 rounded shadow-sm">
+            <div ref={storyRef} className="alert alert-info text-dark mt-4 rounded shadow-sm">
               {story}
+            </div>
+          )}
+
+          {story && (
+            <div className="mt-3 d-flex justify-content-between flex-wrap">
+              <button className="btn btn-outline-warning me-2 mb-2" onClick={handleDownloadImage}>
+                🖼️ Save as Image
+              </button>
+              <button className="btn btn-outline-success mb-2" onClick={handleDownloadPDF}>
+                📄 Save as PDF
+              </button>
             </div>
           )}
 
