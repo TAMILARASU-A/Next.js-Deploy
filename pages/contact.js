@@ -95,7 +95,7 @@ export default function Contact() {
           {/* 📞 Your Contact Info */}
           <div className="mt-4 text-center text-light">
             <p className="mb-1"><strong>Email:</strong> arasu9725@gmail.com</p>
-            <p className="mb-0"><strong>Phone:</strong> +91 9750273135</p>
+            <p className="mb-0"><strong>Phone:</strong> +91 9600848712</p>
           </div>
         </div>
 
