@@ -2,13 +2,25 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import { useState } from 'react'
+import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { auth } from '../firebase'
+import { useRouter } from 'next/router'
 
 export default function Signup() {
-  const [submitted, setSubmitted] = useState(false)
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
+  const router = useRouter()
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    setSubmitted(true)
+    setError('')
+    try {
+      await createUserWithEmailAndPassword(auth, email, password)
+      router.push('/generate') // Redirect after signup
+    } catch (err) {
+      setError('❌ ' + err.message.replace('Firebase:', '').replace('auth/', '').replace(/-/g, ' '))
+    }
   }
 
   return (
@@ -33,21 +45,19 @@ export default function Signup() {
         <div className="bg-white p-5 rounded-4 shadow-lg" style={{ maxWidth: '400px', width: '100%' }}>
           <h2 className="text-center mb-4">📝 Create Account</h2>
 
-          {!submitted ? (
-            <form onSubmit={handleSubmit}>
-              <div className="mb-3">
-                <label className="form-label">Email</label>
-                <input type="email" className="form-control" required />
-              </div>
-              <div className="mb-3">
-                <label className="form-label">Password</label>
-                <input type="password" className="form-control" required />
-              </div>
-              <button className="btn btn-primary w-100">Sign Up</button>
-            </form>
-          ) : (
-            <div className="alert alert-success text-center">✅ Account created!</div>
-          )}
+          {error && <div className="alert alert-danger text-center">{error}</div>}
+
+          <form onSubmit={handleSubmit}>
+            <div className="mb-3">
+              <label className="form-label">Email</label>
+              <input type="email" className="form-control" required onChange={(e) => setEmail(e.target.value)} />
+            </div>
+            <div className="mb-3">
+              <label className="form-label">Password</label>
+              <input type="password" className="form-control" required onChange={(e) => setPassword(e.target.value)} />
+            </div>
+            <button className="btn btn-primary w-100">Sign Up</button>
+          </form>
 
           <p className="mt-3 text-center text-dark">
             Already have an account?{' '}
