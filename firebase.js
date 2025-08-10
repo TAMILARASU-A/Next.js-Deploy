@@ -10,7 +10,7 @@ import { getAuth } from 'firebase/auth'  // ✅ Add this line
 
 const firebaseConfig = {
 
-  
+  apiKey: "AIzaSyCI1Jt_cLQ1e107s1QWr5UnMEqt-QaNYUw",
 
   authDomain: "micromouse-900ec.firebaseapp.com",
 
